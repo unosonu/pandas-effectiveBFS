@@ -1,0 +1,108 @@
+
+# coding: utf-8
+
+# In[26]:
+
+import pyodbc
+conn = pyodbc.connect('DRIVER={SQL Server};SERVER=10.68.24.3;DATABASE=IMAP_Astellas_Dev;UID=spineuser;PWD=spineuser')
+##Can provide port as well with "Port=" as another argument
+cursor = conn.cursor()
+
+#
+cursor.execute("SELECT * FROM dbo.APMstBuyer")
+#row = cursor.fetchone()
+#print row
+rows = cursor.fetchall()  ## if you use fetchone as well above then then using fetchall brings the results after the first row
+for each_row in rows:
+    print each_row
+conn.close()
+               
+
+
+# In[1]:
+
+import pylab
+import pandas
+plot(arange(10))
+
+
+# In[2]:
+
+data = {i:randn() for i in range(7)}
+data
+
+
+# In[22]:
+
+data1 = [randn() for i in range(7)]
+data1
+
+
+# In[54]:
+
+array1 = np.array(data1)
+array1
+array1*10
+#print array1.shape
+#print array1.dtype
+
+
+# In[64]:
+
+#np.zeros((10,10))
+#np.empty((2,3,2))
+#np.arange(15)
+arr = np.array([1,2,3,4,5])
+arr.dtype
+float_arr = arr.astype(np.float64)
+float_arr.dtype
+print float_arr
+
+
+# In[66]:
+
+arr = np.arange(10)
+arr_slice = arr[5:8]
+arr_slice
+
+
+# In[13]:
+
+points = np.arange(-5,5,0.01)
+points
+xs, ys = np.meshgrid(points, points)
+ys
+import matplotlib.pyplot as plt
+z = np.sqrt(xs ** 2 + ys ** 2)
+z
+plt.imshow(z, cmap= plt.cm.gray); plt.colorbar()
+plt.title("Image plaot of $\sqrt{x^2 + y^2}$ for a grid of values")
+
+
+# In[19]:
+
+points = np.arange(-5,5,0.01)
+len(points)
+
+
+# In[10]:
+
+from pandas import Series, DataFrame
+import pandas as pd
+obj = Series([4,6,3,-7])
+obj.values
+
+
+# In[43]:
+
+obj[obj>=3].values
+data = {'state': ['Ohio','Ohio','Ohio','Nevada','Nevada'],
+        'year':[2000,2001,2002,2001,2002],
+        'pop':[1.5,1.7,3.6,2.4,2.9]}
+frame = DataFrame(data)
+frame
+frame2 = DataFrame(data, columns=['year','state','pop','debt'])
+
+frame2['debt'] = np.arange(5.)
+frame2
+
